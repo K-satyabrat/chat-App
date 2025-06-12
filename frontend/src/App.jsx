@@ -1,18 +1,19 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import  Navbar  from "./components/Navbar";
-import  Home  from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 import { Signup } from "./pages/Signup";
-import Login  from "./pages/Login";
+import Login from "./pages/Login";
 import { Setting } from "./pages/Setting";
-import  Profile  from "./pages/Profile";
+import Profile from "./pages/Profile";
 import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
-
+  const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
+  console.log({ onlineUsers });
+  
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);

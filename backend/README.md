@@ -9,13 +9,21 @@ A robust backend server for the chat application built with Express.js, featurin
   - Cookie-based session management
   - Secure password handling
 
-- 💬 **Message Management**
+- 💬 **Real-time Communication**
+  - WebSocket integration using Socket.IO
+  - Real-time message delivery
+  - Online user tracking
+  - Instant status updates
+  - Live user presence system
+
+- 📨 **Message Management**
   - Real-time message handling
   - Message storage and retrieval
   - API endpoints for message operations
 
 - 🛠️ **Technical Features**
   - RESTful API architecture
+  - WebSocket server for real-time features
   - CORS enabled for frontend integration
   - Cookie parsing
   - JSON body parsing with large payload support
@@ -26,6 +34,7 @@ A robust backend server for the chat application built with Express.js, featurin
 
 - **Runtime**: Node.js
 - **Framework**: Express.js
+- **WebSocket**: Socket.IO
 - **Database**: MongoDB (via connection in lib/db.js)
 - **Authentication**: Custom auth system with cookies
 - **Environment Variables**: dotenv
@@ -45,6 +54,12 @@ A robust backend server for the chat application built with Express.js, featurin
 - Get messages
 - Message history
 
+### WebSocket Events
+- `connection`: Handles new user connections
+- `disconnect`: Manages user disconnections
+- `getOnlineUsers`: Broadcasts list of online users
+- Real-time message events
+
 ## Getting Started
 
 ### Prerequisites
@@ -57,7 +72,7 @@ A robust backend server for the chat application built with Express.js, featurin
 
 Create a `.env` file in the root directory with the following variables:
 ```env
-PORT=5000
+PORT=8000
 MONGODB_URI=your_mongodb_connection_string
 # Add other environment variables as needed
 ```
@@ -78,7 +93,7 @@ npm run dev
 yarn dev
 ```
 
-The server will run at `http://localhost:5000` by default.
+The server will run at `http://localhost:8000` by default.
 
 ## Project Structure
 
@@ -89,17 +104,43 @@ backend/
 │   │   ├── auth.route.js
 │   │   └── message.route.js
 │   ├── lib/           # Utility functions and configurations
-│   │   └── db.js      # Database connection
+│   │   ├── db.js      # Database connection
+│   │   ├── socket.js  # Socket.IO configuration and event handlers
+│   │   ├── utils.js   # Utility functions and helpers
+│   │   └── cloudinary.js # Cloudinary image upload configuration
 │   └── index.js       # Main application entry point
 ```
 
 ## API Configuration
 
 - **CORS**: Configured for `http://localhost:5173` (frontend)
+- **WebSocket**: 
+  - Socket.IO server integrated with Express
+  - Real-time event handling
+  - User presence tracking
 - **Body Parser**: 
   - JSON limit: 50MB
   - URL-encoded: Extended mode with 50MB limit
 - **Cookie Parser**: Enabled for session management
+
+## Real-time Features
+
+The application implements real-time features using Socket.IO:
+
+- **User Presence**
+  - Tracks online/offline status of users
+  - Broadcasts user status changes to all connected clients
+  - Maintains a map of online users
+
+- **Connection Management**
+  - Handles user connections and disconnections
+  - Associates socket IDs with user IDs
+  - Manages user session state
+
+- **Event Broadcasting**
+  - Real-time updates for online users
+  - Instant message delivery
+  - Status change notifications
 
 
 

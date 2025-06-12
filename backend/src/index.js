@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 import { connectDb } from "./lib/db.js";
 import messageRoutes from "./routes/message.route.js";
 import cors from "cors";
+import { app, server } from "./lib/socket.js";
+
 
 // Load environment variables
 dotenv.config();
@@ -12,7 +14,7 @@ dotenv.config();
 // Connect to database
 connectDb();
 
-const app = express();
+
 const port = process.env.PORT || 5000;
 
 // Middleware
@@ -36,6 +38,6 @@ app.get("/", (req, res) => {
 });
 
 // Start server
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
