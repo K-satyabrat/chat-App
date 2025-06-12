@@ -126,9 +126,6 @@ chat-app/
 - `CLOUDINARY_API_KEY`: Cloudinary API key
 - `CLOUDINARY_API_SECRET`: Cloudinary API secret
 
-## 📝 API Documentation
-
-The backend API documentation is available in the backend README.md file. Please refer to it for detailed API endpoints and usage.
 
 
 
