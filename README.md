@@ -66,6 +66,7 @@ JWT_SECRET=your_jwt_secret
 CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+NODE_ENV=development
 ```
 
 4. Start the backend server:
@@ -125,6 +126,7 @@ chat-app/
 - `CLOUDINARY_CLOUD_NAME`: Cloudinary cloud name
 - `CLOUDINARY_API_KEY`: Cloudinary API key
 - `CLOUDINARY_API_SECRET`: Cloudinary API secret
+- `NODE_ENV`: Set to "production" for production deployment, "development" for local development
 
 
 
