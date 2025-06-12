@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: chat-app-frontend
+    runtime: node
+    buildCommand: npm install && cd frontend && node ./node_modules/vite/bin/vite.js build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "18.19.0"
+      - key: NODE_ENV
+        value: "production"
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false" 
